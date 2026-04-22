@@ -2,25 +2,24 @@ import type { TaskKey } from '@/lib/site-config'
 
 export const siteContent = {
   navbar: {
-    tagline: 'Independent reading platform',
+    tagline: 'SBM profile & reputation',
   },
   footer: {
-    tagline: 'Stories, resources, and discoverable posts',
+    tagline: 'SBM profile & reputation',
   },
   hero: {
     badge: 'Latest stories and visuals',
     title: ['A thoughtful home for', 'stories, visuals, and discovery.'],
-    description:
-      'Explore fresh articles, image-led posts, and discoverable content across the platform through a calmer and clearer browsing experience.',
+    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
     primaryCta: {
-      label: 'Read latest stories',
-      href: '/articles',
+      label: 'Explore resources',
+      href: '/sbm',
     },
     secondaryCta: {
-      label: 'Explore visuals',
-      href: '/images',
+      label: 'View profiles',
+      href: '/profile',
     },
-    searchPlaceholder: 'Search stories, visuals, listings, and more',
+    searchPlaceholder: 'Search SBM resources and profiles',
     focusLabel: 'Focus',
     featureCardBadge: 'latest cover rotation',
     featureCardTitle: 'Latest posts shape the visual identity of the homepage.',
@@ -29,13 +28,12 @@ export const siteContent = {
   },
   home: {
     metadata: {
-      title: 'Stories, visuals, and discoverable content',
-      description:
-        'Explore articles, images, listings, and curated posts through a cleaner reading-first experience.',
-      openGraphTitle: 'Stories, visuals, and discoverable content',
+      title: 'SBM profile · reputation, milestones, and your resource library',
+      description: 'A focused SBM profile home: public credibility, resource shelves, and growth metrics in one place.',
+      openGraphTitle: 'SBM profile · reputation and milestones',
       openGraphDescription:
-        'Discover articles, visual posts, and connected content through a calmer reading-first experience.',
-      keywords: ['story platform', 'article site', 'visual content', 'content discovery'],
+        'Track your SBM profile strength, connect channels, and showcase milestones with a high-contrast, dashboard-style experience.',
+      keywords: ['SBM', 'profile', 'reputation', 'resource library', 'milestones'],
     },
     introBadge: 'About the platform',
     introTitle: 'Built for reading, browsing, and connecting different kinds of content.',
@@ -52,26 +50,25 @@ export const siteContent = {
       'Lightweight interactions that keep the experience fast and readable.',
     ],
     primaryLink: {
-      label: 'Browse articles',
-      href: '/articles',
+      label: 'SBM library',
+      href: '/sbm',
     },
     secondaryLink: {
-      label: 'See visuals',
-      href: '/images',
+      label: 'Public profiles',
+      href: '/profile',
     },
   },
   cta: {
     badge: 'Start exploring',
     title: 'Explore articles, visuals, and resources through one connected experience.',
-    description:
-      'Move between articles, image-led posts, listings, and resources through one clearer and more connected visual system.',
+    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
     primaryCta: {
-      label: 'Get Started Free',
-      href: '/register',
+      label: 'Explore resources',
+      href: '/sbm',
     },
     secondaryCta: {
-      label: 'Contact Sales',
-      href: '/contact',
+      label: 'View profiles',
+      href: '/profile',
     },
   },
   taskSectionHeading: 'Latest {label}',
@@ -81,31 +78,31 @@ export const siteContent = {
 export const taskPageMetadata: Record<Exclude<TaskKey, 'comment' | 'org' | 'social'>, { title: string; description: string }> = {
   article: {
     title: 'Articles and stories',
-    description: 'Read articles, stories, guides, and long-form posts across topics and interests.',
+    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
   },
   listing: {
     title: 'Listings and discoverable pages',
-    description: 'Explore listings, services, brands, and structured pages organized for easier browsing.',
+    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
   },
   classified: {
     title: 'Classifieds and announcements',
-    description: 'Browse classifieds, offers, notices, and time-sensitive posts across categories.',
+    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
   },
   image: {
     title: 'Images and visual posts',
-    description: 'Explore image-led posts, galleries, and visual stories from across the platform.',
+    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
   },
   profile: {
     title: 'Profiles and public pages',
-    description: 'Discover public profiles, brand pages, and identity-focused posts in one place.',
+    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
   },
   sbm: {
-    title: 'Curated links and saved resources',
-    description: 'Browse useful links, saved references, and curated resources organized for discovery.',
+    title: 'SBM library and saved resources',
+    description: 'Resource shelves, tags, and trust signals for your SBM profile.',
   },
   pdf: {
     title: 'PDFs and downloadable resources',
-    description: 'Open reports, documents, and downloadable resources shared across the platform.',
+    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
   },
 }
 
@@ -173,9 +170,9 @@ export const taskIntroCopy: Record<
       'Browse profiles to understand people and brands more clearly, then continue into related content from the same source.',
     ],
     links: [
-      { label: 'Open listings', href: '/listings' },
-      { label: 'Read articles', href: '/articles' },
-      { label: 'Browse images', href: '/images' },
+      { label: 'SBM library', href: '/sbm' },
+      { label: 'Help center', href: '/help' },
+      { label: 'Settings', href: '/settings' },
     ],
   },
   sbm: {
@@ -186,9 +183,9 @@ export const taskIntroCopy: Record<
       'Use this section to organize helpful sources and discover connected content without leaving the broader site experience.',
     ],
     links: [
-      { label: 'Browse articles', href: '/articles' },
-      { label: 'Explore listings', href: '/listings' },
-      { label: 'Open PDFs', href: '/pdf' },
+      { label: 'Public profiles', href: '/profile' },
+      { label: 'Profile home', href: '/' },
+      { label: 'Help center', href: '/help' },
     ],
   },
   pdf: {

@@ -1,33 +1,33 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FileText, Building2, Tag, Users } from 'lucide-react'
+import { FileText, Bookmark, Users, BarChart3 } from 'lucide-react'
 
 const stats = [
   {
     icon: FileText,
     value: '25K+',
-    label: 'Articles Published',
-    description: 'Quality content created by our community'
+    label: 'Profile views',
+    description: 'Public SBM pages discovered this month',
   },
   {
-    icon: Building2,
+    icon: Bookmark,
     value: '12K+',
-    label: 'Business Listings',
-    description: 'Verified businesses and services'
+    label: 'Resource saves',
+    description: 'Items organized in SBM libraries',
   },
   {
-    icon: Tag,
+    icon: BarChart3,
     value: '50K+',
-    label: 'Classified Ads',
-    description: 'Items listed and sold'
+    label: 'Reputation index',
+    description: 'Cumulative SBM points across the network',
   },
   {
     icon: Users,
     value: '100K+',
-    label: 'Active Users',
-    description: 'Growing community members'
-  }
+    label: 'Active members',
+    description: 'Growing community of professionals',
+  },
 ]
 
 export function StatsSection() {

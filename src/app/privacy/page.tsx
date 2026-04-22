@@ -1,25 +1,38 @@
 ﻿import { PageShell } from '@/components/shared/page-shell'
 import { Card, CardContent } from '@/components/ui/card'
+import { Shield } from 'lucide-react'
 
 const sections = [
-  { title: 'Data We Collect', body: 'Account information, usage analytics, and content you submit.' },
-  { title: 'How We Use Data', body: 'To personalize your experience, improve search, and keep the platform secure.' },
-  { title: 'Your Choices', body: 'You can manage email preferences and delete your account at any time.' },
+  {
+    title: 'Data we collect',
+    body: 'Account basics, SBM library activity, profile fields you choose to publish, and limited technical logs to keep the product reliable.',
+  },
+  {
+    title: 'How we use data',
+    body: 'To show your SBM profile correctly, power search and balance metrics, and protect community members from abuse or fraud.',
+  },
+  {
+    title: 'Your choices',
+    body: 'You can update profile visibility, request export or deletion where applicable, and manage local sign-in from your browser settings.',
+  },
 ]
 
 export default function PrivacyPage() {
   return (
     <PageShell
-      title="Privacy Policy"
-      description="How we collect, use, and protect your information."
+      title="Privacy policy"
+      description="How we treat information in the SBM profile experience, including local sign-in and the resource library you curate here."
     >
-      <Card className="border-border bg-card">
-        <CardContent className="p-6 space-y-4">
-          <p className="text-xs text-muted-foreground">Last updated: March 16, 2026</p>
+      <Card className="border border-border bg-white shadow-sm">
+        <CardContent className="space-y-4 p-6 sm:p-8">
+          <p className="inline-flex items-center gap-2 text-xs text-muted-foreground">
+            <Shield className="h-4 w-4 text-[#76A13B]" />
+            Last updated: April 22, 2026
+          </p>
           {sections.map((section) => (
-            <div key={section.title} className="rounded-lg border border-border bg-secondary/40 p-4">
+            <div key={section.title} className="rounded-2xl border border-border bg-gradient-to-b from-white to-[#e8f2e0]/30 p-5">
               <h3 className="text-sm font-semibold text-foreground">{section.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{section.body}</p>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{section.body}</p>
             </div>
           ))}
         </CardContent>

@@ -2,10 +2,10 @@ import type { TaskKey } from '@/lib/site-config'
 
 export const siteContent = {
   navbar: {
-    tagline: 'SBM , Profile platform',
+    tagline: 'SBM profile & reputation',
   },
   footer: {
-    tagline: 'SBM , Profile platform',
+    tagline: 'SBM profile & reputation',
   },
   hero: {
     badge: 'Latest stories and visuals',
@@ -19,7 +19,7 @@ export const siteContent = {
       label: 'View profiles',
       href: '/profile',
     },
-    searchPlaceholder: 'Search stories, visuals, listings, and more',
+    searchPlaceholder: 'Search SBM resources and profiles',
     focusLabel: 'Focus',
     featureCardBadge: 'latest cover rotation',
     featureCardTitle: 'Latest posts shape the visual identity of the homepage.',
@@ -28,12 +28,12 @@ export const siteContent = {
   },
   home: {
     metadata: {
-      title: 'Stories, visuals, and discoverable content',
-      description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
-      openGraphTitle: 'Stories, visuals, and discoverable content',
+      title: 'SBM profile · reputation, milestones, and your resource library',
+      description: 'A focused SBM profile home: public credibility, resource shelves, and growth metrics in one place.',
+      openGraphTitle: 'SBM profile · reputation and milestones',
       openGraphDescription:
-        'Discover articles, visual posts, and connected content through a calmer reading-first experience.',
-      keywords: ['story platform', 'article site', 'visual content', 'content discovery'],
+        'Track your SBM profile strength, connect channels, and showcase milestones with a high-contrast, dashboard-style experience.',
+      keywords: ['SBM', 'profile', 'reputation', 'resource library', 'milestones'],
     },
     introBadge: 'About the platform',
     introTitle: 'Built for reading, browsing, and connecting different kinds of content.',
@@ -50,12 +50,12 @@ export const siteContent = {
       'Lightweight interactions that keep the experience fast and readable.',
     ],
     primaryLink: {
-      label: 'Browse articles',
-      href: '/articles',
+      label: 'SBM library',
+      href: '/sbm',
     },
     secondaryLink: {
-      label: 'See visuals',
-      href: '/images',
+      label: 'Public profiles',
+      href: '/profile',
     },
   },
   cta: {
@@ -97,8 +97,8 @@ export const taskPageMetadata: Record<Exclude<TaskKey, 'comment' | 'org' | 'soci
     description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
   },
   sbm: {
-    title: 'Curated links and saved resources',
-    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
+    title: 'SBM library and saved resources',
+    description: 'Resource shelves, tags, and trust signals for your SBM profile.',
   },
   pdf: {
     title: 'PDFs and downloadable resources',
@@ -170,9 +170,9 @@ export const taskIntroCopy: Record<
       'Browse profiles to understand people and brands more clearly, then continue into related content from the same source.',
     ],
     links: [
-      { label: 'Open listings', href: '/listings' },
-      { label: 'Read articles', href: '/articles' },
-      { label: 'Browse images', href: '/images' },
+      { label: 'SBM library', href: '/sbm' },
+      { label: 'Help center', href: '/help' },
+      { label: 'Settings', href: '/settings' },
     ],
   },
   sbm: {
@@ -183,9 +183,9 @@ export const taskIntroCopy: Record<
       'Use this section to organize helpful sources and discover connected content without leaving the broader site experience.',
     ],
     links: [
-      { label: 'Browse articles', href: '/articles' },
-      { label: 'Explore listings', href: '/listings' },
-      { label: 'Open PDFs', href: '/pdf' },
+      { label: 'Public profiles', href: '/profile' },
+      { label: 'Profile home', href: '/' },
+      { label: 'Help center', href: '/help' },
     ],
   },
   pdf: {

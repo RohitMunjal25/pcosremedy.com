@@ -68,7 +68,7 @@ export function NoListingsFound() {
       icon={Building2}
       title="No listings found"
       description="We couldn't find any listings matching your search. Try different filters or expand your search area."
-      action={{ label: 'Browse All Listings', href: '/listings' }}
+      action={{ label: 'Open SBM library', href: '/sbm' }}
     />
   )
 }
@@ -79,7 +79,7 @@ export function NoAdsFound() {
       icon={Tag}
       title="No ads found"
       description="There are no classified ads matching your criteria. Check back later or try different search terms."
-      action={{ label: 'Browse All Ads', href: '/classifieds' }}
+      action={{ label: 'Back to SBM home', href: '/sbm' }}
     />
   )
 }

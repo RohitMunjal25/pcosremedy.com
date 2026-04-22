@@ -3,44 +3,71 @@ import { PageShell } from '@/components/shared/page-shell'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { BookOpen, Library, UserCircle } from 'lucide-react'
 import { mockFaqs } from '@/data/mock-data'
 
 const topics = [
-  { title: 'Getting Started', description: 'Create your account and publish your first post.' },
-  { title: 'Bookmarks & Collections', description: 'Save links, organize folders, and share collections.' },
-  { title: 'Listings & Ads', description: 'Manage your business listings and classifieds.' },
+  {
+    title: 'Onboarding & sign-in',
+    description: 'Create a profile, use local sign-in, and know what is stored in your browser compared to the cloud.',
+    icon: UserCircle,
+  },
+  {
+    title: 'SBM library & collections',
+    description: 'Build shelves, add references, and keep partner-ready context next to your links without clutter.',
+    icon: Library,
+  },
+  {
+    title: 'Boosts & public profile',
+    description: 'Understand the balance score, verification rails, and how your outreach signals affect visibility.',
+    icon: BookOpen,
+  },
 ]
 
 export default function HelpPage() {
   return (
     <PageShell
-      title="Help Center"
-      description="Find answers, guides, and best practices."
+      title="Help center"
+      description="Guides for the SBM profile, resource library, boosts, and account basics — in the same green and blue system as the home experience."
       actions={
-        <Button asChild>
-          <Link href="/contact">Contact Support</Link>
+        <Button asChild className="bg-[#76A13B] text-white hover:bg-[#658d34]">
+          <Link href="/contact">Contact support</Link>
         </Button>
       }
     >
       <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="grid gap-6 md:grid-cols-2">
-          {topics.map((topic) => (
-            <Card key={topic.title} className="border-border bg-card transition-transform hover:-translate-y-1">
-              <CardContent className="p-6">
-                <h2 className="text-lg font-semibold text-foreground">{topic.title}</h2>
-                <p className="mt-2 text-sm text-muted-foreground">{topic.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="grid gap-4 sm:grid-cols-2">
+            {topics.map((topic) => {
+              const I = topic.icon
+              return (
+                <Card
+                  key={topic.title}
+                  className="border border-border bg-white shadow-sm transition hover:border-[#76A13B]/30"
+                >
+                  <CardContent className="flex gap-4 p-5">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#1AAAD1]/20 bg-[#e0f4fa]/60 text-[#0a6b82]">
+                      <I className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h2 className="text-base font-semibold text-foreground">{topic.title}</h2>
+                      <p className="mt-1 text-sm text-muted-foreground">{topic.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              )
+            })}
         </div>
-        <Card className="border-border bg-card">
+        <Card className="h-fit border border-border bg-white shadow-sm">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground">FAQ</h3>
-            <Accordion type="single" collapsible className="mt-4">
+            <h3 className="text-lg font-semibold">Popular questions</h3>
+            <p className="mb-3 text-sm text-muted-foreground">Select a topic to expand. Answers are written for the current SBM profile product surface.</p>
+            <Accordion type="single" collapsible className="w-full">
               {mockFaqs.map((faq) => (
                 <AccordionItem key={faq.id} value={faq.id}>
-                  <AccordionTrigger>{faq.question}</AccordionTrigger>
-                  <AccordionContent>{faq.answer}</AccordionContent>
+                  <AccordionTrigger className="text-left text-foreground hover:text-[#76A13B] hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">{faq.answer}</AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>

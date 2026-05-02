@@ -44,7 +44,7 @@ export const siteTaskDefinitions = [
     label: 'SBM library',
     route: '/sbm',
     description: 'Resource shelves, tags, and saved reference sets.',
-    contentType: 'social',
+    contentType: 'sbm',
     enabled: true,
   },
   {

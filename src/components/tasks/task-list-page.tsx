@@ -4,6 +4,7 @@ import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
 import { TaskListClient } from '@/components/tasks/task-list-client'
 import { SchemaJsonLd } from '@/components/seo/schema-jsonld'
+import { ContentImage } from '@/components/shared/content-image'
 import { fetchTaskPosts } from '@/lib/task-data'
 import { SITE_CONFIG, getTaskConfig, type TaskKey } from '@/lib/site-config'
 import { CATEGORY_OPTIONS, normalizeCategory } from '@/lib/categories'
@@ -39,6 +40,17 @@ const variantShells = {
   'sbm-library': 'bg-[linear-gradient(180deg,#f7f8fc_0%,#ffffff_100%)]',
 } as const
 
+function getPostPreviewImage(post: any) {
+  const media = Array.isArray(post?.media) ? post.media : []
+  const mediaUrl = media.find((item: any) => typeof item?.url === 'string' && item.url)?.url
+  const content = post?.content && typeof post.content === 'object' ? post.content : {}
+  const contentImage = Array.isArray((content as any).images)
+    ? (content as any).images.find((url: unknown) => typeof url === 'string' && url)
+    : null
+  const logo = typeof (content as any).logo === 'string' ? (content as any).logo : null
+  return mediaUrl || contentImage || logo || '/placeholder.svg?height=640&width=960'
+}
+
 export async function TaskListPage({ task, category }: { task: TaskKey; category?: string }) {
   if (TASK_LIST_PAGE_OVERRIDE_ENABLED) {
     return await TaskListPageOverride({ task, category })
@@ -59,6 +71,8 @@ export async function TaskListPage({ task, category }: { task: TaskKey; category
   const layoutKey = recipe.taskLayouts[task as keyof typeof recipe.taskLayouts] || `${task}-${task === 'listing' ? 'directory' : 'editorial'}`
   const shellClass = variantShells[layoutKey as keyof typeof variantShells] || 'bg-background'
   const Icon = taskIcons[task] || LayoutGrid
+  const latestProfilePost = task === 'profile' ? posts[0] : null
+  const latestProfileImage = latestProfilePost ? getPostPreviewImage(latestProfilePost) : null
 
   const isDark = ['image-masonry', 'image-portfolio', 'profile-creator'].includes(layoutKey)
   const ui = isDark
@@ -189,7 +203,18 @@ export async function TaskListPage({ task, category }: { task: TaskKey; category
         {layoutKey === 'profile-creator' || layoutKey === 'profile-business' ? (
           <section className={`mb-12 rounded-[2.2rem] p-8 shadow-[0_24px_70px_rgba(15,23,42,0.1)] ${ui.panel}`}>
             <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-              <div className={`min-h-[240px] rounded-[2rem] ${ui.soft}`} />
+              <div className={`relative min-h-[240px] overflow-hidden rounded-[2rem] ${ui.soft}`}>
+                {latestProfileImage ? (
+                  <ContentImage
+                    src={latestProfileImage}
+                    alt={latestProfilePost?.title || 'Latest profile image'}
+                    fill
+                    className="object-cover"
+                    intrinsicWidth={960}
+                    intrinsicHeight={640}
+                  />
+                ) : null}
+              </div>
               <div>
                 <p className={`text-xs uppercase tracking-[0.3em] ${ui.muted}`}>{taskConfig?.label || task}</p>
                 <h1 className="mt-3 text-4xl font-semibold tracking-[-0.05em] text-foreground">Profiles with stronger identity, trust, and reputation cues.</h1>

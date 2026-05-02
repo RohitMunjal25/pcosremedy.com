@@ -1,7 +1,7 @@
 import { ContentImage } from "@/components/shared/content-image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { MapPin, Globe, Phone, Tag, Mail } from "lucide-react";
+import { MapPin, Globe, Phone, Tag, Mail, Bookmark, ExternalLink, User } from "lucide-react";
 import { NavbarShell } from "@/components/shared/navbar-shell";
 import { Footer } from "@/components/shared/footer";
 import { TaskPostCard } from "@/components/shared/task-post-card";
@@ -165,6 +165,7 @@ export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: stri
   const postTags = Array.isArray(post.tags) ? post.tags.filter((tag) => typeof tag === "string") : [];
   const location = content.address || content.location;
   const images = getImageUrls(post, content);
+  const primaryImage = images[0];
   const mapEmbedUrl = buildMapEmbedUrl(content.latitude, content.longitude, location);
   const isBookmark = task === "sbm" || task === "social";
   const hideSidebar = isClassified || isArticle || task === "image" || isBookmark;
@@ -178,6 +179,23 @@ export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: stri
     .slice(0, 3);
   const articleUrl = `${SITE_CONFIG.baseUrl.replace(/\/$/, "")}${taskConfig?.route || "/articles"}/${post.slug}`;
   const articleImage = absoluteUrl(images[0]) || absoluteUrl(SITE_CONFIG.defaultOgImage);
+  const bookmarkSource =
+    (typeof content.website === "string" && content.website.trim()) ||
+    (typeof post.url === "string" && post.url.trim()) ||
+    "";
+  const sourceLabel = bookmarkSource
+    ? (() => {
+        try {
+          return new URL(bookmarkSource).hostname.replace(/^www\./, "");
+        } catch {
+          return "web source";
+        }
+      })()
+    : "web source";
+  const bookmarkAuthor =
+    (typeof content.author === "string" && content.author.trim()) ||
+    post.authorName ||
+    SITE_CONFIG.name;
   const articleSchema = isArticle
     ? {
         "@context": "https://schema.org",
@@ -316,22 +334,82 @@ export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: stri
                   </div>
                 ) : null}
 
-                <div className={cn(isClassified ? "mx-auto w-full max-w-4xl" : "mt-6")}>
-                  <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-                    <Badge variant="secondary" className="inline-flex items-center gap-1">
-                      <Tag className="h-3.5 w-3.5" />
-                      {category}
-                    </Badge>
-                    {location && (
-                      <span className="inline-flex items-center gap-1">
-                        <MapPin className="h-4 w-4" />
-                        {location}
-                      </span>
-                    )}
+                {isBookmark ? (
+                  <div className="mx-auto w-full max-w-6xl">
+                    <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)] lg:items-start">
+                      <div>
+                        <div className="flex flex-wrap items-start gap-x-3 gap-y-2">
+                          <h1 className="text-[2rem] font-bold leading-tight text-[#111111]">
+                            {post.title}
+                          </h1>
+                        </div>
+                        <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-2 text-[15px] text-[#2a8a1f]">
+                          <span>from {sourceLabel}</span>
+                          <Badge variant="secondary" className="border border-[#d8d8d8] bg-[#fafafa] text-[#3157c7]">
+                            {category}
+                          </Badge>
+                        </div>
+
+                        <div className="mt-7 border border-[#cfcfcf] bg-white shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_1px_2px_rgba(0,0,0,0.03)]">
+                          <div className="relative px-5 py-4 before:absolute before:left-0 before:top-0 before:h-full before:w-[7px] before:bg-[linear-gradient(180deg,#f4f4f4_0%,#ececec_100%)] before:content-[''] after:absolute after:right-0 after:top-0 after:h-[12px] after:w-[12px] after:bg-[linear-gradient(135deg,#f1f1f1_50%,#dadada_50%)] after:content-['']">
+                            <div className="space-y-3 pl-3">
+                              <RichContent html={descriptionHtml} className="text-[15px] leading-8 text-[#4a4a4a]" />
+                            </div>
+                          </div>
+
+                          <div className="border-t border-[#e3e3e3] px-5 py-3 text-[15px] font-semibold text-[#184ac9]">
+                            {post.title}
+                          </div>
+
+                          <div className="border-t border-[#ececec] px-5 py-3">
+                            <div className="flex flex-wrap items-center gap-3 text-sm text-[#6a6a6a]">
+                              {bookmarkSource ? (
+                                <a
+                                  href={bookmarkSource}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="inline-flex items-center gap-1.5 text-[#184ac9] hover:underline"
+                                >
+                                  <ExternalLink className="h-4 w-4" />
+                                  Visit source
+                                </a>
+                              ) : null}
+                              {location ? (
+                                <span className="inline-flex items-center gap-1.5">
+                                  <MapPin className="h-4 w-4" />
+                                  {location}
+                                </span>
+                              ) : null}
+                              {postTags.length ? (
+                                <span className="inline-flex items-center gap-1.5">
+                                  <Tag className="h-4 w-4" />
+                                  {postTags.slice(0, 4).join(", ")}
+                                </span>
+                              ) : null}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <h1 className="mt-4 text-3xl font-semibold text-foreground">{post.title}</h1>
-                  <RichContent html={descriptionHtml} className="mt-3 max-w-3xl" />
-                </div>
+                ) : (
+                  <div className={cn(isClassified ? "mx-auto w-full max-w-4xl" : "mt-6")}>
+                    <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+                      <Badge variant="secondary" className="inline-flex items-center gap-1">
+                        <Tag className="h-3.5 w-3.5" />
+                        {category}
+                      </Badge>
+                      {location && (
+                        <span className="inline-flex items-center gap-1">
+                          <MapPin className="h-4 w-4" />
+                          {location}
+                        </span>
+                      )}
+                    </div>
+                    <h1 className="mt-4 text-3xl font-semibold text-foreground">{post.title}</h1>
+                    <RichContent html={descriptionHtml} className="mt-3 max-w-3xl" />
+                  </div>
+                )}
               </>
             ) : null}
 
@@ -379,7 +457,7 @@ export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: stri
               </div>
             ) : null}
 
-            {content.highlights?.length && !isArticle ? (
+            {content.highlights?.length && !isArticle && !isBookmark ? (
               <div className={cn("mt-8 rounded-2xl border border-border bg-card p-6", isClassified ? "mx-auto w-full max-w-4xl" : "")}>
                 <h2 className="text-lg font-semibold text-foreground">Highlights</h2>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
@@ -525,14 +603,6 @@ export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: stri
                   </Link>
                 </li>
               ) : null}
-              <li>
-                <Link
-                  href={`/search?q=${encodeURIComponent(category)}`}
-                  className="text-primary underline-offset-4 hover:underline"
-                >
-                  Search more in {category}
-                </Link>
-              </li>
             </ul>
           </nav>
         </section>

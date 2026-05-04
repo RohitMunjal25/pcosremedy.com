@@ -2,55 +2,55 @@ import type { TaskKey } from '@/lib/site-config'
 
 export const siteContent = {
   navbar: {
-    tagline: 'SBM profile & reputation',
+    tagline: 'SBM profile platform',
   },
   footer: {
-    tagline: 'SBM profile & reputation',
+    tagline: 'SBM profile platform',
   },
   hero: {
-    badge: 'Latest stories and visuals',
-    title: ['A thoughtful home for', 'stories, visuals, and discovery.'],
-    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
+    badge: 'Public profiles and bookmarking',
+    title: ['Build a stronger public identity with', 'profiles, collections, and saved resources.'],
+    description: 'Pcosremedy is an SBM and profile platform for presenting credibility, organizing links, and keeping public identity structured.',
     primaryCta: {
-      label: 'Explore resources',
+      label: 'Open social bookmarking',
       href: '/sbm',
     },
     secondaryCta: {
-      label: 'View profiles',
+      label: 'View public profiles',
       href: '/profile',
     },
-    searchPlaceholder: 'Search SBM resources and profiles',
+    searchPlaceholder: 'Search profiles, links, and collections',
     focusLabel: 'Focus',
-    featureCardBadge: 'latest cover rotation',
-    featureCardTitle: 'Latest posts shape the visual identity of the homepage.',
+    featureCardBadge: 'platform focus',
+    featureCardTitle: 'Public profiles and saved resources define the homepage experience.',
     featureCardDescription:
-      'Recent images and stories stay at the center of the experience without changing any core platform behavior.',
+      'The content now presents the product clearly as an SBM and profile platform instead of a generic content website.',
   },
   home: {
     metadata: {
-      title: 'SBM profile · reputation, milestones, and your resource library',
-      description: 'A focused SBM profile home: public credibility, resource shelves, and growth metrics in one place.',
-      openGraphTitle: 'SBM profile · reputation and milestones',
+      title: 'SBM profile platform for public identity and saved resources',
+      description: 'Explore public profiles, social bookmarking collections, and credibility-focused platform surfaces.',
+      openGraphTitle: 'SBM profile platform',
       openGraphDescription:
-        'Track your SBM profile strength, connect channels, and showcase milestones with a high-contrast, dashboard-style experience.',
-      keywords: ['SBM', 'profile', 'reputation', 'resource library', 'milestones'],
+        'Pcosremedy combines public profile pages, social bookmarking, and structured resource libraries in one product.',
+      keywords: ['SBM profile', 'social bookmarking', 'public profiles', 'resource library', 'reputation platform'],
     },
     introBadge: 'About the platform',
-    introTitle: 'Built for reading, browsing, and connecting different kinds of content.',
+    introTitle: 'Built for public identity, saved resources, and structured discovery.',
     introParagraphs: [
-      'This site brings together article-style reading, visual browsing, and structured discovery so visitors can move naturally between different content types.',
-      'Instead of separating stories, visuals, and supporting resources into disconnected surfaces, the platform keeps them connected in one place with consistent navigation and easier exploration.',
-      'Whether someone starts with a story, an image-led post, a listing, or a resource page, they can keep discovering related content without friction.',
+      'This site brings together public profile pages, social bookmarking collections, and supporting content so people can manage identity and resources in one place.',
+      'Instead of looking like a general-purpose content site, the platform is now presented around its actual product purpose: SBM and profile visibility.',
+      'Whether someone starts with a profile page or a bookmark collection, they can continue exploring connected surfaces without losing context.',
     ],
     sideBadge: 'At a glance',
     sidePoints: [
-      'Reading-first homepage with stronger emphasis on stories and imagery.',
-      'Connected sections for articles, visuals, listings, and supporting resources.',
-      'Cleaner browsing rhythm designed to make exploration feel easier.',
-      'Lightweight interactions that keep the experience fast and readable.',
+      'Homepage positioned around SBM and public profiles.',
+      'Connected sections for profiles, bookmark shelves, and supporting resources.',
+      'Cleaner discovery flow for reputation and saved links.',
+      'Simple interface that keeps structure and trust easy to understand.',
     ],
     primaryLink: {
-      label: 'SBM library',
+      label: 'Social bookmarking',
       href: '/sbm',
     },
     secondaryLink: {
@@ -60,14 +60,14 @@ export const siteContent = {
   },
   cta: {
     badge: 'Start exploring',
-    title: 'Explore articles, visuals, and resources through one connected experience.',
-    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
+    title: 'Explore public profiles, saved links, and credibility-focused platform sections.',
+    description: 'Pcosremedy is designed as an SBM profile website with clearer product positioning and structured discovery.',
     primaryCta: {
-      label: 'Explore resources',
+      label: 'Open social bookmarking',
       href: '/sbm',
     },
     secondaryCta: {
-      label: 'View profiles',
+      label: 'View public profiles',
       href: '/profile',
     },
   },
@@ -78,31 +78,31 @@ export const siteContent = {
 export const taskPageMetadata: Record<Exclude<TaskKey, 'comment' | 'org' | 'social'>, { title: string; description: string }> = {
   article: {
     title: 'Articles and stories',
-    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
+    description: 'Articles and related reading inside the broader SBM profile platform.',
   },
   listing: {
     title: 'Listings and discoverable pages',
-    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
+    description: 'Structured pages and related content connected to the SBM profile experience.',
   },
   classified: {
     title: 'Classifieds and announcements',
-    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
+    description: 'Announcements and short-form content connected to the broader platform.',
   },
   image: {
     title: 'Images and visual posts',
-    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
+    description: 'Visual content and supporting media across the SBM profile website.',
   },
   profile: {
-    title: 'Profiles and public pages',
-    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
+    title: 'Public profiles',
+    description: 'Profile pages for people, brands, and projects presented through a public credibility surface.',
   },
   sbm: {
-    title: 'SBM library and saved resources',
-    description: 'Resource shelves, tags, and trust signals for your SBM profile.',
+    title: 'Social bookmarking and saved resources',
+    description: 'Bookmark collections, saved links, and organized resource shelves.',
   },
   pdf: {
     title: 'PDFs and downloadable resources',
-    description: 'A SBM , Profile site for Pcosremedy, built for clean discovery and structured publishing.',
+    description: 'Downloadable files and document resources connected to the broader platform.',
   },
 }
 
@@ -120,7 +120,7 @@ export const taskIntroCopy: Record<
     links: [
       { label: 'Read articles', href: '/articles' },
       { label: 'Explore classifieds', href: '/classifieds' },
-      { label: 'View profiles', href: '/profile' },
+      { label: 'Public profiles', href: '/profile' },
     ],
   },
   article: {
@@ -146,7 +146,7 @@ export const taskIntroCopy: Record<
     links: [
       { label: 'Business listings', href: '/listings' },
       { label: 'Read articles', href: '/articles' },
-      { label: 'View profiles', href: '/profile' },
+      { label: 'Public profiles', href: '/profile' },
     ],
   },
   image: {
@@ -163,29 +163,25 @@ export const taskIntroCopy: Record<
     ],
   },
   profile: {
-    title: 'Profiles, identities, and public pages',
+    title: 'Public profiles and identity pages',
     paragraphs: [
-      'Profiles capture the identity behind a business, creator, brand, or project and help visitors understand who is behind the content they are exploring.',
-      'These pages work as trust anchors across the site and connect naturally with stories, listings, documents, and other post types.',
+      'Profiles capture the identity behind a person, brand, or project and help visitors understand who is behind the content they are exploring.',
+      'These pages work as public credibility anchors across the site and connect naturally with saved resources, stories, and other post types.',
       'Browse profiles to understand people and brands more clearly, then continue into related content from the same source.',
     ],
     links: [
-      { label: 'SBM library', href: '/sbm' },
-      { label: 'Help center', href: '/help' },
-      { label: 'Settings', href: '/settings' },
+      { label: 'Social bookmarking', href: '/sbm' }
     ],
   },
   sbm: {
-    title: 'Curated links and bookmarked resources',
+    title: 'Social bookmarking and curated resources',
     paragraphs: [
       'This section collects useful links, references, tools, and saved resources in a text-first browsing format.',
-      'Bookmarks stay connected to the rest of the platform, making it easier to move from a saved link into related stories, listings, or resources.',
+      'Bookmarks stay connected to the rest of the platform, making it easier to move from a saved link into related profiles, stories, or other resources.',
       'Use this section to organize helpful sources and discover connected content without leaving the broader site experience.',
     ],
     links: [
-      { label: 'Public profiles', href: '/profile' },
-      { label: 'Profile home', href: '/' },
-      { label: 'Help center', href: '/help' },
+      { label: 'Public profiles', href: '/profile' }
     ],
   },
   pdf: {
@@ -198,7 +194,7 @@ export const taskIntroCopy: Record<
     links: [
       { label: 'Read articles', href: '/articles' },
       { label: 'See listings', href: '/listings' },
-      { label: 'Explore profiles', href: '/profile' },
+      { label: 'Public profiles', href: '/profile' },
     ],
   },
   social: {

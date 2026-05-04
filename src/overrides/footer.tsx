@@ -16,7 +16,6 @@ export function FooterOverride() {
             </span>
             <div>
               <p className="text-sm font-semibold text-foreground">{SITE_CONFIG.name}</p>
-              <p className="text-xs text-[#1AAAD1]">{SITE_CONFIG.tagline}</p>
             </div>
           </div>
           <FooterOverrideNav />

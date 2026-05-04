@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Award, ChevronDown, HelpCircle, Sparkles } from 'lucide-react'
+import { Menu, X, Award, ChevronDown, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/lib/auth-context'
 import { SITE_CONFIG } from '@/lib/site-config'
@@ -22,18 +22,15 @@ export function NavbarOverride() {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
   const { isAuthenticated, user } = useAuth()
-  const primary = SITE_CONFIG.tasks.find((t) => t.enabled && t.key === 'sbm') || SITE_CONFIG.tasks.find((t) => t.enabled)
 
   const centerLinks = useMemo(() => {
     const base: { href: string; label: string }[] = [
-      { href: primary?.route ?? '/sbm', label: 'SBM library' },
       { href: '/about', label: 'About' },
+      { href: '/careers', label: 'Careers' },
+      { href: '/contact', label: 'Contact' },
     ]
-    if (!isAuthenticated) {
-      base.push({ href: '/help', label: 'Help' })
-    }
     return base
-  }, [primary?.route, isAuthenticated])
+  }, [])
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#76A13B]/25 bg-white/90 text-foreground shadow-sm backdrop-blur-xl">
@@ -51,9 +48,6 @@ export function NavbarOverride() {
           </span>
           <span className="min-w-0">
             <span className="block truncate text-lg font-bold tracking-tight text-[#2d3a28]">{SITE_CONFIG.name}</span>
-            <span className="hidden text-[10px] font-medium uppercase tracking-[0.2em] text-[#1AAAD1] sm:block">
-              {SITE_CONFIG.tagline}
-            </span>
           </span>
         </Link>
 
@@ -82,10 +76,10 @@ export function NavbarOverride() {
             <>
               <div
                 className="hidden items-center gap-1.5 rounded-full border border-[#76A13B]/30 bg-[#e8f2e0] px-2.5 py-1.5 text-xs font-semibold text-[#4a6b2a] sm:flex"
-                title="SBM points"
+                title="Wellness resources"
               >
                 <Sparkles className="h-3.5 w-3.5 text-[#76A13B]" />
-                42,250
+                Wellness hub
               </div>
               <div className="hidden items-center gap-1.5 rounded-full border border-[#1AAAD1]/30 bg-[#e0f4fa] px-2.5 py-1.5 text-xs font-medium text-[#0a7a96] md:flex">
                 <Award className="h-3.5 w-3.5 text-[#1AAAD1]" />
@@ -95,17 +89,6 @@ export function NavbarOverride() {
             </>
           ) : (
             <div className="flex items-center gap-2">
-              <Button
-                asChild
-                size="sm"
-                variant="ghost"
-                className="hidden h-9 rounded-full text-[#0a6b82] hover:bg-[#1AAAD1]/10 sm:inline-flex"
-              >
-                <Link href="/help" className="inline-flex items-center gap-1.5">
-                  <HelpCircle className="h-4 w-4" />
-                  Help
-                </Link>
-              </Button>
               <Button
                 asChild
                 size="sm"
